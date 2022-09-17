@@ -1,0 +1,23 @@
+{
+    "contact": {
+      "firstName": "Joshua",
+      "lastName": "elzinga",
+      "email": "whatascrub@test.com",
+      "favoriteColor": "Red",
+      "birthday": "10/5/98"
+    },
+    "contact2": {
+      "firstName": "Darth",
+      "lastName": "Vader",
+      "email": "notajedimaster@test.com",
+      "favoriteColor": "red",
+      "birthday": "07/12/10"
+    },
+    "contact3": {
+      "firstName": "Rukko",
+      "lastName": "Zing",
+      "email": "myfakepersona@test.com",
+      "favoriteColor": "white",
+      "birthday": "09/9/99"
+    }
+  }
