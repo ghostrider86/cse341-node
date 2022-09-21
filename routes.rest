@@ -44,7 +44,7 @@ GET https://week-2-prod.onrender.com/contacts/632674e28ab542a0b4d0942a
 GET https://week-2-prod.onrender.com/contacts/632674e28ab542a0b4d0942b
 
 ### Create contact 
-POST https://week-2-prod.onrender.com/contacts HTTP/1.1
+POST https://week-3-prod.onrender.com/contacts HTTP/1.1
 content-type: application/json
 
 {
@@ -56,7 +56,7 @@ content-type: application/json
 }
 
 ### PUT contact 
-PUT https://week-2-prod.onrender.com/contacts/632674e28ab542a0b4d0942b HTTP/1.1
+PUT https://week-3-prod.onrender.com/contacts/632674e28ab542a0b4d0942b HTTP/1.1
 content-type: application/json
 
 {
@@ -68,5 +68,5 @@ content-type: application/json
 }
 
 ### DELETE contact 
-DELETE https://week-2-prod.onrender.com/contacts/632ad2dd0987102b7f4fbc3a HTTP/1.1
+DELETE https://week-3-prod.onrender.com/contacts/632ad2dd0987102b7f4fbc3a HTTP/1.1
 
