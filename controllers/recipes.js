@@ -70,21 +70,19 @@ const updateRecipe = async (req, res) => {
 
 
 const deleteRecipe = async (req, res) => {
-  try {
-    const recipeName = req.params.Name;
-    if (!recipeName) {
-      res.status(400).send({ message: 'Invalid Recipe Name Supplied' });
-      return;
-    }
-    User.deleteOne({ Name: recipeName }, function (err, result) {
-      if (err) {
-        res.status(500).json(err || 'Some error occurred while deleting the contact.');
-      } else {
-        res.status(200).send(result);
-      }
-    });
-  } catch (err) {
-    res.status(500).json(err || 'Some error occurred while deleting the contact.');
+  const userId = new ObjectId(req.params.id);
+  const recipeName = req.body.Name;
+  const recipeCheck = recipeUtil.recipePass(recipeName);
+  if (recipeCheck.error) {
+    res.status(400).send({ message: recipeCheck.error });
+    return;
+  }
+  const response = await mongodb.getDb().db().collection('recipes').remove({ _id: userId }, true);
+  console.log(response);
+  if (response.deletedCount > 0) {
+    res.status(200).send();
+  } else {
+    res.status(500).json(response.error || 'Some error occurred while deleting the recipe.');
   }
 };
 

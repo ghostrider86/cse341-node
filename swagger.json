@@ -94,6 +94,7 @@
         "parameters": [
           {
             "name": "id",
+            "recipe name": "Name",
             "in": "path",
             "required": true,
             "type": "string"
@@ -104,20 +105,32 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
-                  "example": "any"
+                "Name": {
+                  "type": "string"
                 },
-                "lastName": {
-                  "example": "any"
+                "url": {
+                  "type": "string"
                 },
-                "email": {
-                  "example": "any"
+                "Description": {
+                  "type": "string"
                 },
-                "favoriteColor": {
-                  "example": "any"
+                "Author": {
+                  "type": "string"
                 },
-                "birthday": {
-                  "example": "any"
+                "type": {
+                  "type": "string"
+                },
+                "Ingredients": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "Method": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -126,6 +139,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Invalid Name"
           },
           "500": {
             "description": "Internal Server Error"
@@ -137,6 +153,7 @@
         "parameters": [
           {
             "name": "id",
+            "recipe name": "Name",
             "in": "path",
             "required": true,
             "type": "string"
@@ -145,6 +162,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Invalid Name"
           },
           "500": {
             "description": "Internal Server Error"

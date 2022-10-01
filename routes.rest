@@ -12,7 +12,7 @@ POST http://localhost:8080/recipes HTTP/1.1
 content-type: application/json
 
 {
-    "Name": "Christmas die",
+    "Name": "Christmas death",
     "url": "https://www.bbcgoodfood.com/recipes/2793/christmas-pie",
     "Description": "Combine a few key Christmas flavours here to make a pie that both children and adults will adore",
     "Author": "Mary Cadogan",
@@ -50,7 +50,7 @@ content-type: application/json
   "url": "https://www.bbcgoodfood.com/recipes/1803633/christmas-buns",
   "Description": "Paul Hollywood's fruit rolls can be made ahead then heated up before adding a glossy glaze and citrus icing",
   "Author": "Paul Hollywood",
-  "type": "Dessert",
+  "type": "Desert",
   "Ingredients": [
     "500g strong white flour, plus extra for dusting",
     "7g sachet fast-action dried yeast",
@@ -78,7 +78,7 @@ content-type: application/json
   ]
 }
 ### DELETE contact 
-DELETE http://localhost:8080/recipes/63389c0b6cb32db15d37f9f4 HTTP/1.1
+DELETE http://localhost:8080/recipes/6338bc62b8dd74e7ee99956d HTTP/1.1
 content-type: application/json
 
 {
