@@ -1,5 +1,6 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
+const recipeUtil = require('../util/recipeComplexityCheck');
 
 const getAll = async (req, res) => {
   const result = await mongodb.getDb().db().collection('recipes').find();
@@ -39,6 +40,12 @@ const createRecipe = async (req, res) => {
 const updateRecipe = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   // be aware of updateOne if you only want to update specific fields
+    const recipeName = req.body.Name;
+    const recipeCheck = recipeUtil.recipePass(recipeName);
+    if (recipeCheck.error) {
+      res.status(400).send({ message: recipeCheck.error });
+      return;
+    }
   const recipe = {
     Name: req.body.Name,
     url: req.body.url,
@@ -61,8 +68,26 @@ const updateRecipe = async (req, res) => {
   }
 };
 
+
 const deleteRecipe = async (req, res) => {
   const userId = new ObjectId(req.params.id);
+  try {
+    const recipeName = req.params.Name;
+    if (!recipeName) {
+      res.status(400).send({ message: 'Invalid Recipe Name Supplied' });
+      return;
+    }
+    User.deleteOne({ Name: recipeName }, function (err, result) {
+      if (err) {
+        res.status(500).json(err || 'Some error occurred while deleting the contact.');
+      } else {
+        res.status(204).send(result);
+      }
+    });
+  } catch (err) {
+    res.status(500).json(err || 'Some error occurred while deleting the contact.');
+  }
+
   const response = await mongodb.getDb().db().collection('recipes').remove({ _id: userId }, true);
   console.log(response);
   if (response.deletedCount > 0) {
