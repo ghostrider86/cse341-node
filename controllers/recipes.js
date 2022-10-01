@@ -70,7 +70,6 @@ const updateRecipe = async (req, res) => {
 
 
 const deleteRecipe = async (req, res) => {
-  const userId = new ObjectId(req.params.id);
   try {
     const recipeName = req.params.Name;
     if (!recipeName) {
@@ -81,19 +80,11 @@ const deleteRecipe = async (req, res) => {
       if (err) {
         res.status(500).json(err || 'Some error occurred while deleting the contact.');
       } else {
-        res.status(204).send(result);
+        res.status(200).send(result);
       }
     });
   } catch (err) {
     res.status(500).json(err || 'Some error occurred while deleting the contact.');
-  }
-
-  const response = await mongodb.getDb().db().collection('recipes').remove({ _id: userId }, true);
-  console.log(response);
-  if (response.deletedCount > 0) {
-    res.status(200).send();
-  } else {
-    res.status(500).json(response.error || 'Some error occurred while deleting the recipe.');
   }
 };
 
