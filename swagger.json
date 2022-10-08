@@ -5,21 +5,17 @@
     "description": "Temple API",
     "version": "1.0.0"
   },
-  "host": "project-1-x86b-wcm0.onrender.com",
+  "host": "project-fin.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
   ],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/recipes/": {
       "get": {
+        "tags": [
+          "Recipes"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -32,77 +28,13 @@
         }
       },
       "post": {
+        "tags": [
+          "Recipes"
+        ],
         "description": "",
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "favoriteColor": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/recipes/{id}": {
-      "get": {
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "recipe name": "Name",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
+            "Recipe": {
               "type": "object",
               "properties": {
                 "Name": {
@@ -137,6 +69,82 @@
           }
         ],
         "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/recipes/{id}": {
+      "get": {
+        "tags": [
+          "Recipes"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Recipes"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "recipe name": "Name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "Name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "Description": {
+              "type": "string"
+            },
+            "Author": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "Ingredients": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "Method": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
           "204": {
             "description": "No Content"
           },
@@ -149,6 +157,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Recipes"
+        ],
         "description": "",
         "parameters": [
           {
@@ -172,5 +183,5 @@
         }
       }
     }
+   }
   }
-}
